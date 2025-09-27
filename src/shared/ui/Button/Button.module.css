@@ -1,8 +1,10 @@
 .button {
-  padding: 8px 8px;
-    border: none;
-    background: #ffffff;
-    color: black;
-    cursor: pointer;
-    font-size: 20px;
+  padding: 8px 16px;
+  font-size: 16px;
+  border: 1px solid var(--primary-color);
+  border-radius: 12px;
+  background: var(--bg-color);
+  color: var(--primary-text);
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
