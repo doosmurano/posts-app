@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import styles from "./Header.module.css";
 import { Modal } from "../../shared/ui/Modal/Modal";
 import { Button } from "../../shared/ui/Button/Button";
+import { ThemeSwitcher } from "../../features/ThemeSwitcher/ui/ThemeSwitcher";
 
 export const Header: FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,9 +19,8 @@ export const Header: FC = () => {
               <Button onClick={() => {
                   setIsModalOpen(true);
               }}>О проекте</Button>
-              <Button>
-                Сменить тему
-              </Button>
+
+              <ThemeSwitcher/>
            </div>
 
            <Modal
