@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { PostCard } from "@/entities/post/ui/PostCard";
+import { PostCard } from "../../entities/post/ui/PostCard";
 
 const MOCK_POSTS = [
     {
