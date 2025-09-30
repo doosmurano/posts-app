@@ -1,7 +1,13 @@
 import { FC } from 'react'
+import { PostList } from '@/widgets/PostList/PostList';
+import { MainLayout } from '@/shared/layouts/MainLayout';
 
 const App: FC = () => {
-    return <div>Здесь будет приложение для просмотра постов и комментариев</div>
+    return (
+      <MainLayout>
+          <PostList/>
+      </MainLayout>
+    )
 }
 
 export default App;
