@@ -7,12 +7,12 @@
   .title {
     margin: 0 0 1rem 0;
     color: #e74c3c;
-    font-size: 18px;
+    font-size: 20px;
   }
   
   .errorMessage {
     margin: 0 0 1rem 0;
-    font-size: 14px;
+    font-size: 16px;
     opacity: 0.8;
   }
   
