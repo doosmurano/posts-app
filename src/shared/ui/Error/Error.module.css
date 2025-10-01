@@ -1,0 +1,31 @@
+.container {
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-color);
+  }
+  
+  .title {
+    margin: 0 0 1rem 0;
+    color: #e74c3c;
+    font-size: 18px;
+  }
+  
+  .errorMessage {
+    margin: 0 0 1rem 0;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+  
+  .retryButton {
+    background: var(--text-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .retryButton:hover {
+    opacity: 0.8;
+  }
