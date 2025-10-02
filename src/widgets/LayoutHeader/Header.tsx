@@ -29,11 +29,16 @@ export const Header: FC = () => {
              isOpen={isModalOpen}
              onClose={handleCloseModal}
              >
-                <Fragment>
+              <Modal.Header>
                   <h2>О проекте</h2>
-                  <p>Это приложение для просмотра постов</p>
-                </Fragment>
-             </Modal>
+              </Modal.Header>
+              <Modal.Body>
+                <p>Это приложение для просмотра постов и комментариев</p>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button onClick={handleCloseModal}>ЗАКРЫТЬ</Button>
+              </Modal.Footer>
+            </Modal>
         </header>
     )
 } 
