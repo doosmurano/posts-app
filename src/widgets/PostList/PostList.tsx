@@ -1,6 +1,5 @@
-import { Post } from "../../types/api";
-import { PostLengthFilter } from "../../types/api";
 import { useGetPostsQuery } from "../../shared/api/api";
+import { Post, PostLengthFilter } from "../../types/api";
 import { PostCard } from "../../entities/post/ui/PostCard";
 import { withLoading } from "../../shared/lib/hoc/withLoading";
 import { FC, useCallback, useState, useMemo, Fragment } from "react";
