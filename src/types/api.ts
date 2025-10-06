@@ -13,7 +13,7 @@ export type Comment = {
     body: string;
 }
 
-export type PostLengthFilter = "all" | "short" | "medium" | "long";
+export type PostLengthFilter = "все" | "сначала длинные" | "сначала короткие";
 
 export interface LoadingState {
     isLoading: boolean;
