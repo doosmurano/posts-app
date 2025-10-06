@@ -1,75 +1,53 @@
-import { FC } from "react";
+import { useGetPostsQuery } from "../../shared/api/api";
+import { Post, PostLengthFilter } from "../../types/api";
 import { PostCard } from "../../entities/post/ui/PostCard";
+import { withLoading } from "../../shared/lib/hoc/withLoading";
+import { FC, useCallback, useState, useMemo, Fragment } from "react";
+import { filterByLength } from "../../features/PostLengthFilter/lib/filterByLength";
+import { PostLengthFilter as PostLengthFilterComponent } from "../../features/PostLengthFilter/ui/PostLengthFilter";
 
-const MOCK_POSTS = [
-    {
-        "userId": 1,
-        "id": 1,
-        "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-        "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-      },
-      {
-        "userId": 1,
-        "id": 2,
-        "title": "qui est esse",
-        "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
-      },
-      {
-        "userId": 1,
-        "id": 3,
-        "title": "ea molestias quasi exercitationem repellat qui ipsa sit aut",
-        "body": "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut"
-      },
-      {
-        "userId": 1,
-        "id": 4,
-        "title": "eum et est occaecati",
-        "body": "ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit"
-      },
-      {
-        "userId": 1,
-        "id": 5,
-        "title": "nesciunt quas odio",
-        "body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque"
-      },
-      {
-        "userId": 1,
-        "id": 6,
-        "title": "dolorem eum magni eos aperiam quia",
-        "body": "ut aspernatur corporis harum nihil quis provident sequi\nmollitia nobis aliquid molestiae\nperspiciatis et ea nemo ab reprehenderit accusantium quas\nvoluptate dolores velit et doloremque molestiae"
-      },
-      {
-        "userId": 1,
-        "id": 7,
-        "title": "magnam facilis autem",
-        "body": "dolore placeat quibusdam ea quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nquidem repellat excepturi ut quia\nsunt ut sequi eos ea sed quas"
-      },
-      {
-        "userId": 1,
-        "id": 8,
-        "title": "dolorem dolore est ipsam",
-        "body": "dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae"
-      },
-      {
-        "userId": 1,
-        "id": 9,
-        "title": "nesciunt iure omnis dolorem tempora et accusantium",
-        "body": "consectetur animi nesciunt iure dolore\nenim quia ad\nveniam autem ut quam aut nobis\net est aut quod aut provident voluptas autem voluptas"
-      },
-      {
-        "userId": 1,
-        "id": 10,
-        "title": "optio molestias id quia eum",
-        "body": "quo et expedita modi cum officia vel magni\ndoloribus qui repudiandae\nvero nisi sit\nquos veniam quod sed accusamus veritatis error"
-      },
-]
+const PostListDefault: FC<{posts: Post[]}> = ({ posts }) => {
+  return (
+    <div className="post-list">
+      {posts.map((post) => (
+        <PostCard key={post.id} post={post} />
+      ))}
+    </div>
+  );
+}
+
+export const PostListWithLoading = withLoading(PostListDefault);
 
 export const PostList: FC = () => {
+const [filter, setFilter] = useState<PostLengthFilter>("все");
+
+  const { data: posts, isLoading, isError, refetch } = useGetPostsQuery();
+
+  const handleRetry = useCallback(() => {
+    refetch();
+  }, [refetch]);
+
+  const filteredPosts = useMemo(() => {
+    return filterByLength(posts  || [], filter);
+  }, [posts, filter]);
+
+  const handleFilterChange = useCallback((newFilter: PostLengthFilter) => {
+    setFilter(newFilter);
+  }, []);
+
     return (
-        <div className="post-list">
-            {MOCK_POSTS.map((post) => (
-                <PostCard key={post.id} post={post}/>
-            ))}
-        </div>
-    )
+      <Fragment>
+        <PostLengthFilterComponent
+        filter={filter}
+        onChange={handleFilterChange}
+        />
+        
+        <PostListWithLoading 
+        posts={filteredPosts} 
+        isLoading={isLoading} 
+        isError={isError} 
+        onRetry={handleRetry}
+        />
+      </Fragment>
+    );
 }

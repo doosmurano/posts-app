@@ -6,9 +6,9 @@ export const MainLayout: FC<PropsWithChildren> = ({ children }) => {
     return (
         <div className="main-layout">
             <Header/>
-            <main className="main-content">
+              <main className="main-content">
                 {children}
-            </main>
+              </main>
             <Footer/>
         </div>
     )

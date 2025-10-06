@@ -1,0 +1,30 @@
+.commentList {
+    margin-top: 16px;
+}
+
+.toggleButton {
+    background: none;
+    border: 1px solid var(--border-color, #ccc);
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 10px;
+    color: var(--header-text);
+}
+
+.commentItem {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color, #f0f0f0);
+}
+
+.commentName {
+    margin: 0;
+    font-size: 20px;
+    color: var(--header-text);
+}
+
+.commentEmail {
+    margin: 0;
+    font-size: 18px;
+    color: var(--header-text);
+}
