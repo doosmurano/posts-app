@@ -1,0 +1,90 @@
+import { Comment } from "../../../types/api";
+import styles from "./CommentList.module.css";
+import { FC, useCallback, useState } from "react";
+import { Modal } from "../../../shared/ui/Modal/Modal";
+import { Button } from "../../../shared/ui/Button/Button";
+import { withLoading } from "../../../shared/lib/hoc/withLoading";
+import { useGetCommentsByPostIdQuery } from "../../../shared/api/api";
+
+interface CommentItemProps {
+    comment: Comment;
+}
+
+const CommentItem: FC<CommentItemProps> = ({ comment }) => {
+    return (
+        <div className={styles.commentItem}>
+            <h3 className={styles.commentName}>{comment.name}</h3>
+            <p className={styles.commentEmail}>{comment.email}</p>
+            <p>{comment.body}</p>
+        </div>
+    )
+}
+
+interface CommentListDefaultProps {
+    comments: Comment[] | undefined;
+}
+
+export const CommentListDefault: FC<CommentListDefaultProps> = ({ comments }) => {
+    if (!comments) return null;
+
+    return (
+        <div>
+            {comments.map((comment) => (
+                <CommentItem key={comment.id} comment={comment} />
+            ))}
+        </div>
+    )
+}
+
+const CommentListWithLoading = withLoading(CommentListDefault);
+
+interface CommentListProps {
+    postId: number;
+}
+
+export const CommentList: FC<CommentListProps> = ({ postId }) => {
+    const [isCommentsModalOpen, setIsCommentsModalOpen] = useState(false);
+
+    const { data: comments, isLoading, isError, refetch } = useGetCommentsByPostIdQuery(postId);
+
+    const handleToggleCommentsModal = useCallback(() => {
+        setIsCommentsModalOpen(prev => !prev);
+    }, []);
+
+    const handleRetry = useCallback(() => {
+        refetch();
+    }, [refetch]);
+
+    const commentsCount = comments?.length; 
+
+    return (
+        <div className={styles.commentList}>
+            <Button
+              className={styles.toggleButton}
+              onClick={handleToggleCommentsModal}
+            >
+                КОММЕНТАРИИ ({commentsCount || 0})
+            </Button>
+
+            <Modal
+              isOpen={isCommentsModalOpen}
+              onClose={handleToggleCommentsModal}
+            >
+                <Modal.Header>
+                    <h2>Комментарии</h2>
+                </Modal.Header>
+                <Modal.Body>
+                    <CommentListWithLoading 
+                    comments={comments} 
+                    isLoading={isLoading}
+                    isError={isError}
+                    onRetry={handleRetry}
+                    />
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={handleToggleCommentsModal}>ЗАКРЫТЬ</Button>
+                </Modal.Footer>
+            </Modal>
+        </div>
+    );
+}
