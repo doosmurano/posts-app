@@ -1,9 +1,9 @@
 import { Post } from "../../types/api";
 import { PostLengthFilter } from "../../types/api";
 import { useGetPostsQuery } from "../../shared/api/api";
-import { FC, useCallback, useState, useMemo } from "react";
 import { PostCard } from "../../entities/post/ui/PostCard";
 import { withLoading } from "../../shared/lib/hoc/withLoading";
+import { FC, useCallback, useState, useMemo, Fragment } from "react";
 import { filterByLength } from "../../features/PostLengthFilter/lib/filterByLength";
 import { PostLengthFilter as PostLengthFilterComponent } from "../../features/PostLengthFilter/ui/PostLengthFilter";
 
@@ -37,7 +37,7 @@ const [filter, setFilter] = useState<PostLengthFilter>("все");
   }, []);
 
     return (
-      <>
+      <Fragment>
         <PostLengthFilterComponent
         filter={filter}
         onChange={handleFilterChange}
@@ -49,6 +49,6 @@ const [filter, setFilter] = useState<PostLengthFilter>("все");
         isError={isError} 
         onRetry={handleRetry}
         />
-      </>
+      </Fragment>
     );
 }
