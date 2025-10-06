@@ -1,4 +1,5 @@
 import { FC } from "react";
+import styles from "./PostLengthFilter.module.css";
 import { PostLengthFilter as PostLengthFilterType } from "../../../types/api";
 
 interface PostLengthFilterProps {
@@ -11,11 +12,12 @@ export const PostLengthFilter: FC<PostLengthFilterProps> = ({
     onChange 
 }) => {
     return (
-        <div>
-            <label>
+        <div className={styles.filterContainer}>
+            <label className={styles.filterName}>
                 Длина заголовка
             </label>
             <select
+                className={styles.filterSelect}
                 value={filter}
                 onChange={(event) => onChange(event.target.value as PostLengthFilterType)}
             >
