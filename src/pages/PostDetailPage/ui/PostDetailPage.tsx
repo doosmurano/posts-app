@@ -9,14 +9,12 @@ import { useGetCommentsByPostIdQuery, useGetPostByIdQuery } from "../../../share
 
 const CommentListWithLoading = withLoading(CommentListDefault);
 
-
 export const PostDetailPage: FC = () => {
   const {id} = useParams();
   const postId = Number(id);
 
   const {data: post, isLoading, isError, refetch} = useGetPostByIdQuery(postId);
   const {data: comments, isLoading: isCommentsLoading, isError: isCommentsError, refetch: refetchComments} = useGetCommentsByPostIdQuery(postId);
-
 
   if(isLoading) {
       return <LoadingSpinner />;
