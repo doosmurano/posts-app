@@ -10,6 +10,7 @@ import { AlbumPhotosPage } from "../../../pages/AlbumPhotosPage/ui/AlbumPhotosPa
 export const AppRouter: FC = () => {
   return (
        <Routes>
+          <Route path="/" element={<PostsPage />} />
           <Route path="/posts" element={<PostsPage />} />
           <Route path="/posts/:id" element={<PostDetailPage />} />
           <Route path="/users/:id/posts" element={<UserPostsPage />} />
