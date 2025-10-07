@@ -1,4 +1,4 @@
-import { Post, PostLengthFilter } from "../../../types/api";
+import { Post, PostLengthFilter } from "@/types/api";
 
 export const filterByLength = (posts: Post[], filter: PostLengthFilter): Post[] => {
   if (!posts) return [];

@@ -26,5 +26,6 @@ export const usePosts = () => {
       isError,
       handleRetry,
       handleFilterChange,
+      filter,
     }
 }  

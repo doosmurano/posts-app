@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Post } from "../../../types/api";
+import { Post } from "@/types/api";
 
 interface PostContentProps {
     post: Post

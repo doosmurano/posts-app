@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { Post } from "../../../types/api";
+import { Post } from "@/types/api";
 import { PostContent } from "./PostContent";
-import { CommentList } from "../../../widgets/CommentList/ui/CommentList";
+import { CommentList } from "@/widgets/CommentList/ui/CommentList";
 
 interface PostCardProps {
     post: Post

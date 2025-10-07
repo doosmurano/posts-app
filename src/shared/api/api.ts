@@ -1,4 +1,4 @@
-import { Post, Comment } from "../../types/api";
+import { Post, Comment } from "@/types/api";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const postsApi = createApi({

@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { useParams } from "react-router-dom";
-import { Error } from "../../../shared/ui/Error/Error";
-import { withLoading } from "../../../shared/lib/hoc/withLoading";
-import { PostContent } from "../../../entities/post/ui/PostContent";
-import { CommentListDefault } from "../../../widgets/CommentList/ui/CommentList";
-import { LoadingSpinner } from "../../../shared/ui/LoadingSpinner/LoadingSpinner";
-import { useGetCommentsByPostIdQuery, useGetPostByIdQuery } from "../../../shared/api/api";
+import { Error } from "@/shared/ui/Error/Error";
+import { withLoading } from "@/shared/lib/hoc/withLoading";
+import { PostContent } from "@/entities/post/ui/PostContent";
+import { CommentListDefault } from "@/widgets/CommentList/ui/CommentList";
+import { LoadingSpinner } from "@/shared/ui/LoadingSpinner/LoadingSpinner";
+import { useGetCommentsByPostIdQuery, useGetPostByIdQuery } from "@/shared/api/api";
 
 const CommentListWithLoading = withLoading(CommentListDefault);
 

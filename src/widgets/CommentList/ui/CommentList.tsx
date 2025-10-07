@@ -1,10 +1,10 @@
-import { Comment } from "../../../types/api";
+import { Comment } from "@/types/api";
 import styles from "./CommentList.module.css";
+import { Modal } from "@/shared/ui/Modal/Modal";
 import { FC, useCallback, useState } from "react";
-import { Modal } from "../../../shared/ui/Modal/Modal";
-import { Button } from "../../../shared/ui/Button/Button";
-import { withLoading } from "../../../shared/lib/hoc/withLoading";
-import { useGetCommentsByPostIdQuery } from "../../../shared/api/api";
+import { Button } from "@/shared/ui/Button/Button";
+import { withLoading } from "@/shared/lib/hoc/withLoading";
+import { useGetCommentsByPostIdQuery } from "@/shared/api/api";
 
 interface CommentItemProps {
     comment: Comment;
