@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styles from "./PostLengthFilter.module.css";
-import { PostLengthFilter as PostLengthFilterType } from "../../../types/api";
+import { PostLengthFilter as PostLengthFilterType } from "@/types/api";
 
 interface PostLengthFilterProps {
     filter: PostLengthFilterType;

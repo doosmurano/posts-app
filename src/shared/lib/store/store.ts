@@ -1,4 +1,4 @@
-import { postsApi } from "../../api/api";
+import { postsApi } from "@/shared/api/api";
 import { configureStore } from "@reduxjs/toolkit";
 
 export const store = configureStore({

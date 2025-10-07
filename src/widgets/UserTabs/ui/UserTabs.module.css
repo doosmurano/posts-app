@@ -1,0 +1,24 @@
+.userTabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--border-color, #e0e0e0);
+  }
+  
+  .tab {
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    color: var(--text-color, #666);
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  
+  .tab:hover {
+    background-color: var(--primary-color, rgba(0, 123, 255, 0.05));
+  }
+  
+  .tab.active {
+    color: (var(--primary-color, #007bff));
+    border-bottom-color: red;
+  }

@@ -1,17 +1,20 @@
 import { FC } from 'react'
 import './styles/theme.css';
-import { PostList } from '../widgets/PostList/PostList';
+import { BrowserRouter } from 'react-router-dom';
+import { AppRouter } from './providers/router/AppRouter';
 import { MainLayout } from '../shared/layouts/MainLayout';
 import { ThemeProvider } from '../shared/lib/theme/ThemeProvider';
 
 const App: FC = () => {
-    return (
-      <ThemeProvider>
+  return (
+    <ThemeProvider>
+      <BrowserRouter>
         <MainLayout>
-          <PostList/>
+          <AppRouter />
         </MainLayout>
-      </ThemeProvider>
-    )
+      </BrowserRouter>
+    </ThemeProvider>
+  );
 }
 
 export default App;

@@ -1,7 +1,7 @@
 import { FC, ComponentType } from "react";
-import { Error } from "../../ui/Error/Error";
-import { LoadingState } from "../../../types/api";
-import { LoadingSpinner } from "../../ui/LoadingSpinner/LoadingSpinner";
+import { LoadingState } from "@/types/api";
+import { Error } from "@/shared/ui/Error/Error";
+import { LoadingSpinner } from "@/shared/ui/LoadingSpinner/LoadingSpinner";
 
 interface WithLoadingProps extends LoadingState {
     onRetry?: () => void;

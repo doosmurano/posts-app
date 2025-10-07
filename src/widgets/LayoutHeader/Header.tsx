@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import { FC, useState, Fragment } from "react";
-import { Modal } from "../../shared/ui/Modal/Modal";
-import { Button } from "../../shared/ui/Button/Button";
-import { ThemeSwitcher } from "../../features/ThemeSwitcher/ui/ThemeSwitcher";
+import { Modal } from "@/shared/ui/Modal/Modal";
+import { Button } from "@/shared/ui/Button/Button";
+import { ThemeSwitcher } from "@/features/ThemeSwitcher/ui/ThemeSwitcher";
 
 export const Header: FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,8 +14,9 @@ export const Header: FC = () => {
 
     return (
         <header className={styles.header}>
+          <Link to="/" className={styles.logo}>
            <h1>Posts App</h1>
-
+          </Link>
            <div>
               <Fragment>
                  <Button onClick={() => {
@@ -40,5 +42,5 @@ export const Header: FC = () => {
               </Modal.Footer>
             </Modal>
         </header>
-    )
+    );
 } 
