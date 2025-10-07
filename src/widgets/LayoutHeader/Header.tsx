@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import { FC, useState, Fragment } from "react";
 import { Modal } from "../../shared/ui/Modal/Modal";
@@ -13,8 +14,9 @@ export const Header: FC = () => {
 
     return (
         <header className={styles.header}>
+          <Link to="/" className={styles.logo}>
            <h1>Posts App</h1>
-
+          </Link>
            <div>
               <Fragment>
                  <Button onClick={() => {
