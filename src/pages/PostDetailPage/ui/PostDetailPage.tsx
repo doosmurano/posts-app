@@ -28,6 +28,7 @@ export const PostDetailPage: FC = () => {
       <div>
            <PostContent post={post} />
 
+           <h2>Комментарии</h2>
            <CommentListWithLoading
            comments={comments}
            isLoading={isCommentsLoading}
