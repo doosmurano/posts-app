@@ -1,6 +1,7 @@
+import type { ReactNode } from "react";
 import styles from "./Modal.module.css";
 import { createPortal } from "react-dom";
-import { createContext, FC,ReactNode, useContext } from "react";
+import { createContext, useContext } from "react";
 
 interface ModalContextType {
     onClose: () => void;
@@ -26,7 +27,7 @@ interface ModalSubComponentProps {
     className?: string;
 }
 
-export const ModalHeader: FC<ModalSubComponentProps> = ({children, className}) => {
+export const ModalHeader = ({children, className}: ModalSubComponentProps) => {
     const { onClose } =  useModalContext();
 
     return (
@@ -42,7 +43,7 @@ export const ModalHeader: FC<ModalSubComponentProps> = ({children, className}) =
     );
 };
 
-export const ModalBody: FC<ModalSubComponentProps> = ({children, className}) => {
+export const ModalBody = ({children, className}: ModalSubComponentProps) => {
     return (
         <div className={`${styles.body} ${className}`}>
           {children}
@@ -50,7 +51,7 @@ export const ModalBody: FC<ModalSubComponentProps> = ({children, className}) => 
     );
 };
 
-export const ModalFooter: FC<ModalSubComponentProps> = ({children, className}) => {
+export const ModalFooter = ({children, className}: ModalSubComponentProps) => {
     return (
         <div className={`${styles.footer} ${className}`}>
           {children}
@@ -58,11 +59,7 @@ export const ModalFooter: FC<ModalSubComponentProps> = ({children, className}) =
     );
 };
 
-export const Modal: FC<ModalProps> & {
-    Header: typeof ModalHeader;
-    Body: typeof ModalBody;
-    Footer: typeof ModalFooter;
-} = ({isOpen, onClose, children}) => {
+export const Modal = ({isOpen, onClose, children}: ModalProps) => {
     if (!isOpen) return null;
 
     return createPortal(

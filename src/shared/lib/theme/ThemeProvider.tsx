@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { FC, PropsWithChildren, useEffect, useState } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
 
@@ -15,7 +15,7 @@ export const ThemeContext = createContext<ThemeContextType>({
     toggleTheme: () => {},
 });
 
-export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
+export const ThemeProvider = ({ children }: PropsWithChildren) => {
     const [theme, setTheme] = useState<Theme>(() => {
         const savedTheme = localStorage.getItem(LOCAL_STORAGE_KEY);
         return savedTheme as Theme || "light";

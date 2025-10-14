@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { useParams } from "react-router-dom";
 import { Error } from "@/shared/ui/Error/Error";
 import { withLoading } from "@/shared/lib/hoc/withLoading";
@@ -9,7 +8,7 @@ import { useGetCommentsByPostIdQuery, useGetPostByIdQuery } from "@/shared/api/a
 
 const CommentListWithLoading = withLoading(CommentListDefault);
 
-export const PostDetailPage: FC = () => {
+export const PostDetailPage = () => {
   const {id} = useParams();
   const postId = Number(id);
 

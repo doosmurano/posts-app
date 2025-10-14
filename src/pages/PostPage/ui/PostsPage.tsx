@@ -1,7 +1,6 @@
-import { FC } from "react";
 import { PostList } from "@/widgets/PostList/PostList";
 
-export const PostsPage: FC = () => {
+export const PostsPage = () => {
   return (
       <div>
           <PostList />

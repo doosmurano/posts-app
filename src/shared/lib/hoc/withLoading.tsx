@@ -1,4 +1,4 @@
-import { FC, ComponentType } from "react";
+import { ComponentType } from "react";
 import { LoadingState } from "@/types/api";
 import { Error } from "@/shared/ui/Error/Error";
 import { LoadingSpinner } from "@/shared/ui/LoadingSpinner/LoadingSpinner";
@@ -10,7 +10,7 @@ interface WithLoadingProps extends LoadingState {
 export function withLoading<P extends object>(
     WrappedComponent: ComponentType<P>
 ): ComponentType<P & WithLoadingProps> {
-    const WithLoadingComponent: FC<P & WithLoadingProps> = (props) => {
+    const WithLoadingComponent = (props: P & WithLoadingProps) => {
         const { isLoading, isError, errorMessage, onRetry, ...rest } = props;
 
         if(isLoading) {

@@ -1,4 +1,3 @@
-import { FC } from "react";
 import styles from "./UserTabs.module.css";
 import { NavLink } from "react-router-dom";
 
@@ -6,7 +5,7 @@ interface UserTabsProps {
     userId: number;
 }
 
-export const UserTabs: FC<UserTabsProps> = ({ userId }) => {
+export const UserTabs = ({ userId }: UserTabsProps) => {
     return (
         <nav className={styles.userTabs}>
             <NavLink 

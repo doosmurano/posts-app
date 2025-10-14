@@ -1,11 +1,10 @@
-import { FC } from "react";
 import { Post } from "@/types/api";
 
 interface PostContentProps {
     post: Post
 }
 
-export const PostContent: FC<PostContentProps> = ({ post }) => {
+export const PostContent = ({ post }: PostContentProps) => {
 
   return (
       <article className="post-card">

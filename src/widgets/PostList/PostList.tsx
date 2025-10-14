@@ -1,11 +1,11 @@
+import { Fragment } from "react";
 import { Post } from "@/types/api";
-import { FC, Fragment } from "react";
 import { PostCard } from "@/entities/post/ui/PostCard";
 import { withLoading } from "@/shared/lib/hoc/withLoading";
 import { usePosts } from "@/features/PostList/model/hooks/usePosts";
 import { PostLengthFilter as PostLengthFilterComponent } from "@/features/PostLengthFilter/ui/PostLengthFilter";
 
-const PostListDefault: FC<{posts: Post[]}> = ({ posts }) => {
+const PostListDefault = ({ posts }: {posts: Post[]}) => {
   return (
     <div className="post-list">
       {posts.map((post) => (
@@ -17,7 +17,7 @@ const PostListDefault: FC<{posts: Post[]}> = ({ posts }) => {
 
 export const PostListWithLoading = withLoading(PostListDefault);
 
-export const PostList: FC = () => {
+export const PostList = () => {
   const { posts, isLoading, isError, handleRetry, handleFilterChange, filter } = usePosts();
 
     return (

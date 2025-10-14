@@ -1,4 +1,3 @@
-import { FC } from "react";
 import styles from "./Error.module.css";
 import { Button } from "../Button/Button";
 
@@ -8,11 +7,11 @@ interface ErrorProps {
     onRetry?: () => void;
 }
 
-export const Error: FC<ErrorProps> = ({
+export const Error = ({
   title = "Ошибка загрузки",
   errorMessage = "Произошла ошибка при загрузке данных",
   onRetry = () => {},
-}) => {
+}: ErrorProps) => {
     return (
         <div className={styles.container}>
             <h3 className={styles.title}>{title}</h3>
