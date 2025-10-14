@@ -1,7 +1,7 @@
 import { Comment } from "@/types/api";
 import styles from "./CommentList.module.css";
 import { Modal } from "@/shared/ui/Modal/Modal";
-import { FC, useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { Button } from "@/shared/ui/Button/Button";
 import { withLoading } from "@/shared/lib/hoc/withLoading";
 import { useGetCommentsByPostIdQuery } from "@/shared/api/api";
@@ -10,7 +10,7 @@ interface CommentItemProps {
     comment: Comment;
 }
 
-const CommentItem: FC<CommentItemProps> = ({ comment }) => {
+const CommentItem = ({ comment }: CommentItemProps) => {
     return (
         <div className={styles.commentItem}>
             <h3 className={styles.commentName}>{comment.name}</h3>
@@ -24,7 +24,7 @@ interface CommentListDefaultProps {
     comments: Comment[] | undefined;
 }
 
-export const CommentListDefault: FC<CommentListDefaultProps> = ({ comments }) => {
+export const CommentListDefault = ({ comments }: CommentListDefaultProps) => {
     if (!comments) return null;
 
     return (
@@ -39,10 +39,10 @@ export const CommentListDefault: FC<CommentListDefaultProps> = ({ comments }) =>
 const CommentListWithLoading = withLoading(CommentListDefault);
 
 interface CommentListProps {
-    postId: number;
+    postId: string;
 }
 
-export const CommentList: FC<CommentListProps> = ({ postId }) => {
+export const CommentList = ({ postId }: CommentListProps) => {
     const [isCommentsModalOpen, setIsCommentsModalOpen] = useState(false);
 
     const { data: comments, isLoading, isError, refetch } = useGetCommentsByPostIdQuery(postId);

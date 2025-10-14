@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
-import { FC, useState, Fragment } from "react";
+import { useState, Fragment } from "react";
 import { Modal } from "@/shared/ui/Modal/Modal";
 import { Button } from "@/shared/ui/Button/Button";
 import { ThemeSwitcher } from "@/features/ThemeSwitcher/ui/ThemeSwitcher";
 
-export const Header: FC = () => {
+export const Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleCloseModal = () => {

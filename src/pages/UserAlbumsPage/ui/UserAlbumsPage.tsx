@@ -1,8 +1,7 @@
-import { FC } from "react";
 import { useParams } from "react-router-dom";
 import { UserTabs } from "@/widgets/UserTabs/ui/UserTabs";
 
-export const UserAlbumsPage: FC = () => {
+export const UserAlbumsPage = () => {
     const {id} = useParams();
     const userId = Number(id);
 

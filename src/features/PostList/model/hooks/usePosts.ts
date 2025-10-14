@@ -4,7 +4,7 @@ import { useState, useCallback, useMemo } from "react";
 import { filterByLength } from "@/features/PostLengthFilter/lib/filterByLength";
 
 export const usePosts = () => {
-    const [filter, setFilter] = useState<PostLengthFilter>("все");
+    const [filter, setFilter] = useState<PostLengthFilter>(PostLengthFilter.ALL);
     
     const { data: posts, isLoading, isError, refetch } = useGetPostsQuery();
     

@@ -1,8 +1,7 @@
-import { FC } from "react";
 import { useParams } from "react-router-dom";
 import { UserTabs } from "@/widgets/UserTabs/ui/UserTabs";
 
-export const UserTodosPage: FC = () => {
+export const UserTodosPage = () => {
     const {id} = useParams();
     const userId = Number(id);
 

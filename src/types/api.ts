@@ -13,7 +13,11 @@ export type Comment = {
     body: string;
 }
 
-export type PostLengthFilter = "все" | "сначала длинные" | "сначала короткие";
+export enum PostLengthFilter {
+    ALL = "все",
+    LONGEST_FIRST = "сначала длинные",
+    SHORTEST_FIRST = "сначала короткие",
+}
 
 export interface LoadingState {
     isLoading: boolean;

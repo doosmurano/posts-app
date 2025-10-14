@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { Routes, Route } from "react-router-dom";
 import { PostsPage } from "@/pages/PostPage/ui/PostsPage";
 import { UserPostsPage } from "@/pages/UserPostsPage/ui/UserPostsPage";
@@ -7,7 +6,7 @@ import { PostDetailPage } from "@/pages/PostDetailPage/ui/PostDetailPage";
 import { UserAlbumsPage } from "@/pages/UserAlbumsPage/ui/UserAlbumsPage";
 import { AlbumPhotosPage } from "@/pages/AlbumPhotosPage/ui/AlbumPhotosPage";
 
-export const AppRouter: FC = () => {
+export const AppRouter = () => {
   return (
        <Routes>
           <Route path="/" element={<PostsPage />} />

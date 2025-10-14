@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { useParams } from "react-router-dom";
 import { Error } from "@/shared/ui/Error/Error";
 import { withLoading } from "@/shared/lib/hoc/withLoading";
@@ -9,12 +8,15 @@ import { useGetCommentsByPostIdQuery, useGetPostByIdQuery } from "@/shared/api/a
 
 const CommentListWithLoading = withLoading(CommentListDefault);
 
-export const PostDetailPage: FC = () => {
+export const PostDetailPage = () => {
   const {id} = useParams();
-  const postId = Number(id);
 
-  const {data: post, isLoading, isError, refetch} = useGetPostByIdQuery(postId);
-  const {data: comments, isLoading: isCommentsLoading, isError: isCommentsError, refetch: refetchComments} = useGetCommentsByPostIdQuery(postId);
+  if(!id) {
+    return <Error errorMessage="Некорректный ID" />;
+  }
+
+  const {data: post, isLoading, isError, refetch} = useGetPostByIdQuery(id);
+  const {data: comments, isLoading: isCommentsLoading, isError: isCommentsError, refetch: refetchComments} = useGetCommentsByPostIdQuery(id);
 
   if(isLoading) {
       return <LoadingSpinner />;
