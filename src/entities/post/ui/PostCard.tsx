@@ -12,7 +12,7 @@ export const PostCard = ({ post }: PostCardProps) => {
       <article className="post-card">
         <PostContent post={post} />
         <CommentList
-         postId={post.id} />
+         postId={`${post.id}`} />
       </article>
   );
 }

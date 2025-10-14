@@ -10,10 +10,13 @@ const CommentListWithLoading = withLoading(CommentListDefault);
 
 export const PostDetailPage = () => {
   const {id} = useParams();
-  const postId = Number(id);
 
-  const {data: post, isLoading, isError, refetch} = useGetPostByIdQuery(postId);
-  const {data: comments, isLoading: isCommentsLoading, isError: isCommentsError, refetch: refetchComments} = useGetCommentsByPostIdQuery(postId);
+  if(!id) {
+    return <Error errorMessage="Некорректный ID" />;
+  }
+
+  const {data: post, isLoading, isError, refetch} = useGetPostByIdQuery(id);
+  const {data: comments, isLoading: isCommentsLoading, isError: isCommentsError, refetch: refetchComments} = useGetCommentsByPostIdQuery(id);
 
   if(isLoading) {
       return <LoadingSpinner />;

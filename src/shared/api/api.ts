@@ -15,14 +15,14 @@ export const postsApi = createApi({
             providesTags: ["Post"],
         }),
 
-        getPostById: builder.query<Post, number>({
+        getPostById: builder.query<Post, string>({
             query: (id) => `posts/${id}`,
             providesTags: ( _, __, postId) => [
                 { type: "Post", id: postId },
             ],
         }),
 
-        getCommentsByPostId: builder.query<Comment[], number>({
+        getCommentsByPostId: builder.query<Comment[], string>({
             query: (postId) => `posts/${postId}/comments`,
             providesTags: ( _, __, postId) => [
                 { type: "Comment", id: postId },

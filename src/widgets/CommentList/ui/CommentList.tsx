@@ -39,7 +39,7 @@ export const CommentListDefault = ({ comments }: CommentListDefaultProps) => {
 const CommentListWithLoading = withLoading(CommentListDefault);
 
 interface CommentListProps {
-    postId: number;
+    postId: string;
 }
 
 export const CommentList = ({ postId }: CommentListProps) => {
