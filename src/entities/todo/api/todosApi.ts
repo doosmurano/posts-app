@@ -10,7 +10,7 @@ export const todosApi = createApi({
     tagTypes: ["Todo"],
 
     endpoints: (builder) => ({
-        getTodos: builder.query<Todo[], number>({
+        getTodos: builder.query<Todo[], void>({
             query: () => "todos",
             providesTags: (result) =>
                 result

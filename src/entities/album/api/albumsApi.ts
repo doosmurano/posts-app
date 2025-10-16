@@ -10,7 +10,7 @@ export const albumsApi = createApi({
     tagTypes: ["Album"],
 
     endpoints: (builder) => ({
-        getAlbums: builder.query<Album[], number>({
+        getAlbums: builder.query<Album[], void>({
             query: () => "albums",
             providesTags: (result) =>
                 result

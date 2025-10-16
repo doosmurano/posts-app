@@ -10,7 +10,7 @@ export const postsApi = createApi({
     tagTypes: ["Post"],
 
     endpoints: (builder) => ({
-        getPosts: builder.query<Post[], number>({
+        getPosts: builder.query<Post[], void>({
             query: () => "posts",
             providesTags: (result) =>
                 result
