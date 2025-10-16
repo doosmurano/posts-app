@@ -39,13 +39,13 @@ export const CommentListDefault = ({ comments }: CommentListDefaultProps) => {
 const CommentListWithLoading = withLoading(CommentListDefault);
 
 interface CommentListProps {
-    postId: string;
+    postId: number;
 }
 
 export const CommentList = ({ postId }: CommentListProps) => {
     const [isCommentsModalOpen, setIsCommentsModalOpen] = useState(false);
 
-    const { data: comments, isLoading, isError, refetch } = useGetCommentsByPostIdQuery(Number(postId));
+    const { data: comments, isLoading, isError, refetch } = useGetCommentsByPostIdQuery(postId);
 
     const handleToggleCommentsModal = useCallback(() => {
         setIsCommentsModalOpen(prev => !prev);

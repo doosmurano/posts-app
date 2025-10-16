@@ -16,8 +16,14 @@ export const PostDetailPage = () => {
     return <Error errorMessage="Некорректный ID" />;
   }
 
-  const {data: post, isLoading, isError, refetch} = useGetPostByIdQuery(Number(id));
-  const {data: comments, isLoading: isCommentsLoading, isError: isCommentsError, refetch: refetchComments} = useGetCommentsByPostIdQuery(Number(id));
+  const postId = Number(id);
+
+  if(isNaN(postId) || postId <= 0) {
+    return <Error errorMessage="Некорректный ID поста" />;
+  }
+
+  const {data: post, isLoading, isError, refetch} = useGetPostByIdQuery(postId);
+  const {data: comments, isLoading: isCommentsLoading, isError: isCommentsError, refetch: refetchComments} = useGetCommentsByPostIdQuery(postId);
 
   if(isLoading) {
       return <LoadingSpinner />;
