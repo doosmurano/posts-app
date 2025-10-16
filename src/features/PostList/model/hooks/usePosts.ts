@@ -1,6 +1,6 @@
 import { PostLengthFilter } from "@/types/api";
-import { useGetPostsQuery } from "@/shared/api/api";
 import { useState, useCallback, useMemo } from "react";
+import { useGetPostsQuery } from "@/entities/post/api/postApi";
 import { filterByLength } from "@/features/PostLengthFilter/lib/filterByLength";
 
 export const usePosts = () => {

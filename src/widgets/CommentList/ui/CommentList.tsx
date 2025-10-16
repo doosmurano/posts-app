@@ -1,10 +1,10 @@
 import { Comment } from "@/types/api";
+import { useCallback, useState } from "react";
 import styles from "./CommentList.module.css";
 import { Modal } from "@/shared/ui/Modal/Modal";
-import { useCallback, useState } from "react";
 import { Button } from "@/shared/ui/Button/Button";
 import { withLoading } from "@/shared/lib/hoc/withLoading";
-import { useGetCommentsByPostIdQuery } from "@/shared/api/api";
+import { useGetCommentsByPostIdQuery } from "@/entities/comment/api/commentsApi";
 
 interface CommentItemProps {
     comment: Comment;
@@ -45,7 +45,7 @@ interface CommentListProps {
 export const CommentList = ({ postId }: CommentListProps) => {
     const [isCommentsModalOpen, setIsCommentsModalOpen] = useState(false);
 
-    const { data: comments, isLoading, isError, refetch } = useGetCommentsByPostIdQuery(postId);
+    const { data: comments, isLoading, isError, refetch } = useGetCommentsByPostIdQuery(Number(postId));
 
     const handleToggleCommentsModal = useCallback(() => {
         setIsCommentsModalOpen(prev => !prev);
