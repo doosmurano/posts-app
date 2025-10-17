@@ -15,7 +15,7 @@ export const PostContent = ({ post }: PostContentProps) => {
       </h2>
       <p>{post.body}</p>
       <footer className={styles.footer}>
-        <span>Author ID: {post.userId}</span>
+        <span><Link to={`/users/${post.userId}/posts`}>Author ID: {post.userId}</Link></span>
         <span>Post ID: {post.id}</span>
       </footer>
     </article>
