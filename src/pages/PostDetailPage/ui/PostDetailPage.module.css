@@ -1,0 +1,9 @@
+.pageContainer {
+    max-width: 800px;
+    margin: 0 20px;
+    padding: 20px;
+}
+
+.commentsSection {
+    padding: 20px;
+}

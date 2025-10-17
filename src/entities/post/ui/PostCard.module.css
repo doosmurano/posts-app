@@ -1,0 +1,13 @@
+.postCard {
+    background: var(--header-bg, #f3f3f3);
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.postContent {
+    padding: 20px;
+}
+
+.commentsButton {
+    padding: 0 40px 20px;
+}
