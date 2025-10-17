@@ -1,10 +1,10 @@
 import { Comment } from "@/types/api";
+import { useCallback, useState } from "react";
 import styles from "./CommentList.module.css";
 import { Modal } from "@/shared/ui/Modal/Modal";
-import { useCallback, useState } from "react";
 import { Button } from "@/shared/ui/Button/Button";
 import { withLoading } from "@/shared/lib/hoc/withLoading";
-import { useGetCommentsByPostIdQuery } from "@/shared/api/api";
+import { useGetCommentsByPostIdQuery } from "@/entities/comment/api/commentsApi";
 
 interface CommentItemProps {
     comment: Comment;
@@ -39,7 +39,7 @@ export const CommentListDefault = ({ comments }: CommentListDefaultProps) => {
 const CommentListWithLoading = withLoading(CommentListDefault);
 
 interface CommentListProps {
-    postId: string;
+    postId: number;
 }
 
 export const CommentList = ({ postId }: CommentListProps) => {
