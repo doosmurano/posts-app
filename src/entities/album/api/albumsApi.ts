@@ -1,4 +1,5 @@
 import { Album } from "@/entities/album/model/types";
+import { Photo } from "@/entities/photo/model/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const albumsApi = createApi({
@@ -7,7 +8,7 @@ export const albumsApi = createApi({
         baseUrl: "https://jsonplaceholder.typicode.com" 
     }),
 
-    tagTypes: ["Album"],
+    tagTypes: ["Album", "Photo"],
 
     endpoints: (builder) => ({
         getAlbums: builder.query<Album[], void>({
@@ -36,11 +37,23 @@ export const albumsApi = createApi({
             ]
             : [{ type: "Album", id: `USER_${userId}` }],
         }),
+
+        getPhotosByAlbumId: builder.query<Photo[], number>({
+            query: (albumId) => `albums/${albumId}/photos`,
+            providesTags: (result, _, albumId) =>
+               result
+            ?[
+                ...result.map(({ id }) => ({ type: "Photo" as const, id })),
+                { type: "Photo", id: albumId },
+            ]
+            : [{ type: "Photo", id: albumId }],
+        }),
     }),
 })
 
 export const { 
     useGetAlbumsQuery, 
     useGetAlbumByIdQuery, 
-    useGetAlbumsByUserIdQuery 
+    useGetAlbumsByUserIdQuery, 
+    useGetPhotosByAlbumIdQuery
 } = albumsApi;
