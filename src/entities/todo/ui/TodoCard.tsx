@@ -1,5 +1,5 @@
-import { Todo } from "@/types/api";
 import styles from "./TodoCard.module.css";
+import { Todo } from "@/entities/todo/model/types";
 
 interface TodoCardProps {
     todo: Todo;

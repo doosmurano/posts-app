@@ -1,4 +1,4 @@
-import { Comment } from "@/types/api";
+import { Comment } from "@/entities/comment/model/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const commentsApi = createApi({

@@ -1,6 +1,6 @@
-import { Album } from "@/types/api";
 import { Link } from "react-router-dom";
 import styles from "./AlbumCard.module.css";
+import { Album } from "@/entities/album/model/types";
 
 interface AlbumCardProps {
     album: Album;

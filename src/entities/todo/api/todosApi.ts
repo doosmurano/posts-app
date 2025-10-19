@@ -1,4 +1,4 @@
-import { Todo } from "@/types/api";
+import { Todo } from "@/entities/todo/model/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const todosApi = createApi({

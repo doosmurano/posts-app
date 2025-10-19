@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Post } from "@/types/api";
+import { Post } from "@/entities/post/model/types";
 import { PostCard } from "@/entities/post/ui/PostCard";
 import { withLoading } from "@/shared/lib/hoc/withLoading";
 import { usePosts } from "@/features/PostList/model/hooks/usePosts";

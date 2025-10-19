@@ -1,8 +1,8 @@
-import { Comment } from "@/types/api";
 import { useCallback, useState } from "react";
 import styles from "./CommentList.module.css";
 import { Modal } from "@/shared/ui/Modal/Modal";
 import { Button } from "@/shared/ui/Button/Button";
+import { Comment } from "@/entities/comment/model/types";
 import { withLoading } from "@/shared/lib/hoc/withLoading";
 import { useGetCommentsByPostIdQuery } from "@/entities/comment/api/commentsApi";
 

@@ -1,4 +1,5 @@
-import { Post, PostLengthFilter } from "@/types/api";
+import { PostLengthFilter } from "@/types/api";
+import { Post } from "@/entities/post/model/types";
 
 export const filterByLength = (posts: Post[], filter: PostLengthFilter): Post[] => {
   if (!posts) return [];

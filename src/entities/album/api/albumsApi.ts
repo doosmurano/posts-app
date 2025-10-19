@@ -1,4 +1,4 @@
-import { Album } from "@/types/api";
+import { Album } from "@/entities/album/model/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const albumsApi = createApi({
