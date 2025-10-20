@@ -1,8 +1,10 @@
-import { useParams } from "react-router-dom";
 import { Error } from "@/shared/ui/Error/Error";
+import { Link, useParams } from "react-router-dom";
+import { ItemList } from "@/shared/ui/ItemList/ItemList";
 import { PhotoCard } from "@/entities/photo/ui/PhotoCard";
+import styles from "@/pages/UserPostsPage/ui/UserPostsPage.module.css";
 import { LoadingSpinner } from "@/shared/ui/LoadingSpinner/LoadingSpinner";
-import { useGetPhotosByAlbumIdQuery } from "@/entities/album/api/albumsApi";
+import { useGetAlbumByIdQuery, useGetPhotosByAlbumIdQuery } from "@/entities/album/api/albumsApi";
 
 export const AlbumPhotosPage = () => {
     const {id} = useParams();
@@ -13,10 +15,15 @@ export const AlbumPhotosPage = () => {
         return <Error errorMessage="Некорректный ID альбома" />;
     }
 
+    const {data: album} = useGetAlbumByIdQuery(albumId);
     const {data: photos, isLoading, isError, refetch} = useGetPhotosByAlbumIdQuery(albumId);
 
     return (
         <div>
+            <div className={styles.backButtonContainer}>
+              <Link to={`/users/${album?.userId}/albums`} className={styles.backButton}>НАЗАД</Link>
+            </div>
+            
             <h2>Фотографии альбома {albumId}</h2>
 
             {isLoading && <LoadingSpinner />}
@@ -26,13 +33,12 @@ export const AlbumPhotosPage = () => {
                 <p>В альбоме нет фотографий</p>
             )}
             
-            {photos && (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
-                    {photos.map((photo) => (
-                        <PhotoCard key={photo.id} photo={photo} />
-                    ))}
-                </div>
-            )}
+            <ItemList
+              items={photos}
+              renderItem={(photo) => (
+                <PhotoCard key={photo.id} photo={photo} />
+              )}
+            />
         </div>
     );
 }

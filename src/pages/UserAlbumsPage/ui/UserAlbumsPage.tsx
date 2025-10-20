@@ -1,7 +1,9 @@
-import { useParams } from "react-router-dom";
 import { Error } from "@/shared/ui/Error/Error";
+import { Link, useParams } from "react-router-dom";
+import { ItemList } from "@/shared/ui/ItemList/ItemList";
 import { UserTabs } from "@/widgets/UserTabs/ui/UserTabs";
 import { AlbumCard } from "@/entities/album/ui/AlbumCard";
+import styles from "@/pages/UserPostsPage/ui/UserPostsPage.module.css";
 import { LoadingSpinner } from "@/shared/ui/LoadingSpinner/LoadingSpinner";
 import { useGetAlbumsByUserIdQuery } from "@/entities/album/api/albumsApi";
 
@@ -17,6 +19,10 @@ export const UserAlbumsPage = () => {
 
     return (
         <div>
+            <div className={styles.backButtonContainer}>
+              <Link to="/posts" className={styles.backButton}>НАЗАД</Link>
+            </div>
+            
             <UserTabs userId={userId} />
             <h2>Альбомы пользователя {userId}</h2>
 
@@ -27,13 +33,12 @@ export const UserAlbumsPage = () => {
                 <p>У пользователя нет альбомов</p>
             )}
             
-            {albums && (
-                <div>
-                    {albums.map((album) => (
-                        <AlbumCard key={album.id} album={album} />
-                    ))}
-                </div>
-            )}
+            <ItemList
+              items={albums}
+              renderItem={(album) => (
+                <AlbumCard key={album.id} album={album} />
+              )}
+            />
         </div>
     );
 }

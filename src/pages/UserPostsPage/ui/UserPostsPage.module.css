@@ -1,19 +1,9 @@
-.pageContainer {
-    max-width: 800px;
-    margin: 0 20px;
-    padding: 20px 0;
-}
-
-.commentsSection {
-    padding: 20px;
-}
-
 .backButtonContainer {
-    padding: 10px 20px;
+    padding: 20px 20px;
 }
 
 .backButton {
-    padding: 10px 10px;
+    padding: 10px 20px;
     font-size: 12px;
     border: 1px solid var(--primary-color);
     border-radius: 12px;
