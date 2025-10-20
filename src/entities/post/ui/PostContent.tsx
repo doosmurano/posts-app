@@ -1,6 +1,6 @@
-import { Post } from "@/types/api";
 import { Link } from "react-router-dom";
 import styles from "./PostContent.module.css";
+import { Post } from "@/entities/post/model/types";
 
 interface PostContentProps {
     post: Post

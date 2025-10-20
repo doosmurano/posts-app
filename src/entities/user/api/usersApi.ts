@@ -1,4 +1,4 @@
-import { User } from "@/types/api";
+import { User } from "@/entities/user/model/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const usersApi = createApi({

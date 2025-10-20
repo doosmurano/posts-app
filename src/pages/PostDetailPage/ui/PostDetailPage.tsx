@@ -1,6 +1,6 @@
-import { useParams } from "react-router-dom";
 import { Error } from "@/shared/ui/Error/Error";
 import styles from "./PostDetailPage.module.css";
+import { Link, useParams } from "react-router-dom";
 import { withLoading } from "@/shared/lib/hoc/withLoading";
 import { PostContent } from "@/entities/post/ui/PostContent";
 import { useGetPostByIdQuery } from "@/entities/post/api/postApi";
@@ -36,7 +36,11 @@ export const PostDetailPage = () => {
 
   return (
     <div className={styles.pageContainer}>
-         <PostContent post={post} />
+      <div className={styles.backButtonContainer}>
+        <Link to="/posts" className={styles.backButton}>НАЗАД</Link>
+      </div>
+      
+        <PostContent post={post} />
       <div className={styles.commentsSection}>
          <h3>Комментарии</h3>
          <CommentListWithLoading

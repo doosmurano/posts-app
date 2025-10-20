@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Error } from "@/shared/ui/Error/Error";
+import styles from "./UserPostsPage.module.css";
 import { PostCard } from "@/entities/post/ui/PostCard";
+import { ItemList } from "@/shared/ui/ItemList/ItemList";
 import { UserTabs } from "@/widgets/UserTabs/ui/UserTabs";
 import { useGetPostsByUserIdQuery } from "@/entities/post/api/postApi";
 import { LoadingSpinner } from "@/shared/ui/LoadingSpinner/LoadingSpinner";
@@ -17,8 +20,13 @@ export const UserPostsPage = () => {
 
     return (
         <div>
+            <div className={styles.backButtonContainer}>
+              <Link to="/posts" className={styles.backButton}>НАЗАД</Link>
+            </div>
+
             <UserTabs userId={userId} />
             <h2>Посты пользователя {userId}</h2>
+
             {isLoading && <LoadingSpinner />}
             {isError && <Error errorMessage="Ошибка загрузки постов" onRetry={refetch} />}
             
@@ -26,13 +34,12 @@ export const UserPostsPage = () => {
                 <p>У пользователя нет постов</p>
             )}
             
-            {posts && (
-                <div>
-                    {posts.map((post) => (
-                        <PostCard key={post.id} post={post} />
-                    ))}
-                </div>
-            )}
+            <ItemList
+              items={posts}
+              renderItem={(post) => (
+                <PostCard key={post.id} post={post} />
+              )}
+            />
         </div>
     );
 }

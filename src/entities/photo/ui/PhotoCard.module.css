@@ -1,0 +1,10 @@
+.photoCard {
+    background: white;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.photoUrl {
+    width: 100%;
+    height: 100%;
+}

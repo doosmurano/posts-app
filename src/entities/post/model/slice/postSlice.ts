@@ -1,4 +1,4 @@
-import { Post } from "@/types/api";
+import { Post } from "@/entities/post/model/types";
 import { RootState } from "@/app/providers/store/store";
 import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
 

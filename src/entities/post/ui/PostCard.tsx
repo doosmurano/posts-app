@@ -1,6 +1,6 @@
-import { Post } from "@/types/api";
 import styles from "./PostCard.module.css";
 import { PostContent } from "./PostContent";
+import { Post } from "@/entities/post/model/types";
 import { CommentList } from "@/widgets/CommentList/ui/CommentList";
 
 interface PostCardProps {
