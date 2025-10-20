@@ -1,3 +1,4 @@
+import { ChangeEventHandler } from "react";
 import styles from "./PostLengthFilter.module.css";
 import { PostLengthFilter as PostLengthFilterType } from "@/types/api";
 
@@ -6,10 +7,11 @@ interface PostLengthFilterProps {
     onChange: (filter: PostLengthFilterType) => void;
 }
 
-export const PostLengthFilter = ({ 
-    filter, 
-    onChange 
-}: PostLengthFilterProps) => {
+export const PostLengthFilter = ({ filter, onChange }: PostLengthFilterProps) => {
+    const handleFilterChange: ChangeEventHandler<HTMLSelectElement> = (event) => {
+        onChange(event.target.value as PostLengthFilterType);
+    };
+    
     return (
         <div className={styles.filterContainer}>
             <label className={styles.filterName}>
@@ -18,7 +20,7 @@ export const PostLengthFilter = ({
             <select
                 className={styles.filterSelect}
                 value={filter}
-                onChange={(event) => onChange(event.target.value as PostLengthFilterType)}
+                onChange={handleFilterChange}
             >
                 <option value={PostLengthFilterType.ALL}>Все</option>
                 <option value={PostLengthFilterType.LONGEST_FIRST}>Сначала длинные</option>
